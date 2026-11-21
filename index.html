@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ATM Banking Management System</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">A</div>
+
+            <div>
+                <h2>ATM<span>Bank</span></h2>
+                <small>Digital Banking</small>
+            </div>
+
+        </div>
+
+        <div class="profile">
+
+            <div class="avatar">AH</div>
+
+            <div>
+                <h3>Ali Haider</h3>
+                <small>Personal Account</small>
+            </div>
+
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <nav>
+
+            <a href="#" class="nav-link active">
+                <span>▦</span> Dashboard
+            </a>
+
+            <a href="#transactionHistory" class="nav-link">
+                <span>↔</span> Transactions
+            </a>
+
+            <a href="#accountInfo" class="nav-link">
+                <span>◉</span> Account Details
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="security-card">
+
+                <span>🛡️</span>
+
+                <h4>Secure Banking</h4>
+
+                <p>Your transactions are protected.</p>
+
+            </div>
+
+            <p class="version">ATM Banking System v1.0</p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>ATM Dashboard</h1>
+
+                <p>Welcome back! Manage your banking transactions.</p>
+
+            </div>
+
+            <div class="top-right">
+
+                <div class="live-time">
+
+                    <span class="online-dot"></span>
+
+                    <span id="liveTime">Loading...</span>
+
+                </div>
+
+                <div class="avatar small-avatar">AH</div>
+
+            </div>
+
+        </header>
+
+
+        <!-- SUMMARY CARDS -->
+
+        <section class="summary-grid">
+
+
+            <div class="summary-card balance-card">
+
+                <div class="card-heading">
+
+                    <span>Available Balance</span>
+
+                    <span class="card-icon">💳</span>
+
+                </div>
+
+                <h2 id="balance">$200,000.00</h2>
+
+                <p>Current account balance</p>
+
+                <div class="balance-footer">
+
+                    <span>● Account Balance</span>
+
+                    <span>USD</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="card-heading">
+
+                    <span>Account Status</span>
+
+                    <span class="card-icon">◉</span>
+
+                </div>
+
+                <h2 class="status-active" id="accountStatus">
+                    Active
+                </h2>
+
+                <p>Your account status</p>
+
+                <div class="status-indicator">
+
+                    <span class="online-dot"></span>
+
+                    Operational
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="card-heading">
+
+                    <span>Transactions</span>
+
+                    <span class="card-icon">↔</span>
+
+                </div>
+
+                <h2 id="transactionCount">0</h2>
+
+                <p>Total transactions in this session</p>
+
+                <div class="status-indicator">
+                    Transaction overview
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BANKING CONTENT -->
+
+        <section class="content-grid">
+
+
+            <!-- WITHDRAWAL PANEL -->
+
+            <div class="panel withdrawal-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <h2>ATM Cash Withdrawal</h2>
+
+                        <p>Manage your banking transactions</p>
+
+                    </div>
+
+                    <span class="withdraw-icon">↗</span>
+
+                </div>
+
+
+                <!-- LOGIN SECTION -->
+
+                <div id="loginSection">
+
+                    <div class="notice">
+
+                        <span>🔐</span>
+
+                        <div>
+
+                            <strong>ATM Authentication</strong>
+
+                            <p>Enter any six-digit PIN to continue.</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label for="pin">Enter Your ATM PIN</label>
+
+                    <input
+                        type="password"
+                        id="pin"
+                        maxlength="6"
+                        inputmode="numeric"
+                        pattern="[0-9]{6}"
+                        placeholder="Enter 6-digit PIN"
+                        autocomplete="off"
+                    >
+
+                    <div class="attempt-info">
+
+                        <span>PIN Requirement</span>
+
+                        <span>Exactly 6 Digits</span>
+
+                    </div>
+
+
+                    <button class="primary-btn" id="loginBtn">
+
+                        Authenticate Account →
+
+                    </button>
+
+                </div>
+
+
+                <!-- ACCOUNT VERIFICATION -->
+
+                <div id="accountVerification" class="hidden">
+
+                    <div class="success-notice">
+
+                        <span>✓</span>
+
+                        <div>
+
+                            <strong>PIN Accepted</strong>
+
+                            <p>Now verify your account status.</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label for="verifyAccount">
+                        Is Your Account Active?
+                    </label>
+
+                    <select id="verifyAccount">
+
+                        <option value="">Select Account Status</option>
+
+                        <option value="yes">Yes - Active</option>
+
+                        <option value="no">No - Inactive</option>
+
+                    </select>
+
+
+                    <label for="verifyBlocked">
+                        Is Your Account Blocked?
+                    </label>
+
+                    <select id="verifyBlocked">
+
+                        <option value="">Select Block Status</option>
+
+                        <option value="no">No - Not Blocked</option>
+
+                        <option value="yes">Yes - Blocked</option>
+
+                    </select>
+
+
+                    <button class="primary-btn" id="verifyBtn">
+
+                        Verify Account →
+
+                    </button>
+
+                </div>
+
+
+                <!-- TRANSACTION SECTION -->
+
+                <div id="transactionSection" class="hidden">
+
+
+                    <div class="success-notice">
+
+                        <span>✓</span>
+
+                        <div>
+
+                            <strong>Account Verified</strong>
+
+                            <p>You can now perform transactions.</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="account-controls">
+
+                        <div>
+
+                            <label for="activeAccount">
+                                Account Active
+                            </label>
+
+                            <select id="activeAccount">
+
+                                <option value="yes">Yes</option>
+
+                                <option value="no">No</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div>
+
+                            <label for="blockedAccount">
+                                Account Blocked
+                            </label>
+
+                            <select id="blockedAccount">
+
+                                <option value="no">No</option>
+
+                                <option value="yes">Yes</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <label for="withdrawAmount">
+                        Withdrawal Amount ($)
+                    </label>
+
+
+                    <div class="amount-input">
+
+                        <span>$</span>
+
+                        <input
+                            type="number"
+                            id="withdrawAmount"
+                            placeholder="Enter amount"
+                            min="1"
+                            step="1"
+                        >
+
+                    </div>
+
+
+                    <div class="limit-info">
+
+                        <span>Minimum: $1</span>
+
+                        <span>Maximum: $99,999</span>
+
+                    </div>
+
+
+                    <button class="primary-btn" id="withdrawBtn">
+
+                        Withdraw Money →
+
+                    </button>
+
+
+                    <button class="secondary-btn" id="logoutBtn">
+
+                        Logout
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- NOTIFICATION -->
+
+                <div id="notification" class="notification hidden"></div>
+
+
+            </div>
+
+
+
+            <!-- INFORMATION PANEL -->
+
+            <div class="panel information-panel" id="accountInfo">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <h2>Banking Information</h2>
+
+                        <p>Account security and details</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">🔐</div>
+
+                    <div>
+
+                        <strong>PIN Protection</strong>
+
+                        <p>Six-digit PIN validation required.</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">💵</div>
+
+                    <div>
+
+                        <strong>Withdrawal Limit</strong>
+
+                        <p>Maximum withdrawal is $99,999.</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">⚡</div>
+
+                    <div>
+
+                        <strong>Instant Processing</strong>
+
+                        <p>Transactions are processed instantly.</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">🛡️</div>
+
+                    <div>
+
+                        <strong>Account Security</strong>
+
+                        <p>Account status checked before withdrawal.</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="support-box">
+
+                    <h3>Need Assistance?</h3>
+
+                    <p>This is a frontend ATM simulation project.</p>
+
+                    <span>● System Online</span>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- TRANSACTION HISTORY -->
+
+        <section class="panel history-panel" id="transactionHistory">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <h2>Recent Transactions</h2>
+
+                    <p>Your latest banking activity</p>
+
+                </div>
+
+                <span class="history-label">Live History</span>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Transaction</th>
+
+                            <th>Date & Time</th>
+
+                            <th>Amount</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="historyBody">
+
+                        <tr id="emptyHistory">
+
+                            <td colspan="4" class="empty-message">
+
+                                No transactions available yet.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>© 2026 ATM Banking System. Educational Project.</p>
+
+            <p>Designed with HTML5, CSS3 & JavaScript</p>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
